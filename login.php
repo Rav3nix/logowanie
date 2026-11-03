@@ -1,4 +1,16 @@
-<?php$connect = mysqli_connect("localhost","root","","laboratorium");
+
+<?php
+session_start();
+if(isset($_POST['login']){
+    $login = $_POST['login'];
+    $password = $_POST['password'];
+
+    if($login =="admin" && $password == "tajnehaslo321"){
+        $_SESSION['login'] = $login;
+        header("location: wyniki.php")
+    }
+})
+$connect = mysqli_connect("localhost","root","","laboratorium");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +24,13 @@
             <label for="login">login</label>
             <input type="text" id="login" name="login">
             <label for="password">Haslo</label>
-            <input type="password" id="password" name="loginhaslo">
+            <input type="password" id="password" name="password">
             <input type="submit" value="zatwierdz">
+
         </form>
+
 </body>
 </html>
+<?php
+mysqli_close($connect);
+?>
